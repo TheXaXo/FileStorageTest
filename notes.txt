@@ -1,0 +1,57 @@
+# JIRA Daily Time Logged ###################################################################################################################
+
+0h
+
+# Done #####################################################################################################################################
+
+There is a git archive command but it is not supported by GitHub (there is an open issue from 2016) and also JGit doesn't support it for remote repositories. Maybe we could just clone to a tag with depth 1?
+
+Researched DEK/KEK encryption.
+
+# Doing ####################################################################################################################################
+
+JGit is the most used Java git SDK. In order to avoid cloning the whole repository separate branches are created for each file.
+
+Adding new file:
+git clone --single-branch https://github.com/TheXaXo/FileStorageTest
+git checkout -b GPU-Z.2.36.0.exe
+Upload the file
+git add .
+git commit -m "Add file"
+git push --set-upstream origin GPU-Z.2.36.0.exe
+
+Updating file:
+git clone -b GPU-Z.2.36.0.exe --single-branch --depth 1 https://github.com/TheXaXo/FileStorageTest
+Upload the file
+git add .
+git commit -m "Update file"
+git push
+
+Downloading file:
+git clone -b GPU-Z.2.36.0.exe --single-branch --depth 1 TAG https://github.com/TheXaXo/FileStorageTest
+
+V2 file versioning support. Add option to change the storage used for files - option for git repository. Also option to upload in both places at once. Possibly option to make the attached files to a given class to be encrypted with DEK/KEK configuration. Hash algorithms DEK/KEK.
+
+# Questions ################################################################################################################################
+
+# Bugs #####################################################################################################################################
+
+investigate if GraphQL =in= operator works correctly.
+
+When we have reserved keyword for an attribute name: "end" for example - when we fetch the related instance attributes an error is thrown. If we rename the attribute even after the schema is regenerated the error is still being thrown.
+
+# To Do ####################################################################################################################################
+
+Faceted search. Generate facets API for given class and ordered columns - location, manufacturer. This works like a group by. The API first should retrieve the structure only without the data.
+
+V2 data views. Relationship select data views?
+
+GraphQL query - add relations filter by related instance attributes and relation attributes.
+
+We need separate mutations for each relationship type where we will have the instance relationship id argument.
+
+The tenant/all API should show the multi-tenant-group tenant. It is currently hidden.
+
+Fact table with dimension extraction.
+
+Relationship inference. See the relationship import.
